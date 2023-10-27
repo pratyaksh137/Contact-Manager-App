@@ -12,6 +12,12 @@ const getOneContact = (req, resp) => {
 };
 
 const createContact = (req, resp) => {
+    console.log(req.body);
+    const { name, status } = req.body;
+    if (!name || !status) {
+        resp.status(400);
+        throw new Error('All fields are mandatory');
+    }
     resp.status(200).json({ message: `Create a new contact for id = ${req.params.id}` });
 };
 
